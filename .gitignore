@@ -1,0 +1,19 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle files
+.gradle
+build
+
+# Idea
+.idea/*
+*.iml
+*.iws
+*.ipr
+
+# OS
+Thumbs.db
+.DS_Store
