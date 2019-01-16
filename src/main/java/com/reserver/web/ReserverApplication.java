@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ReserverApplication {
 
 	public static void main(String[] args) {
+		System.out.println("------start Spring!!------");
 		SpringApplication.run(ReserverApplication.class, args);
 	}
 
