@@ -5,8 +5,8 @@ import com.reserver.web.response.AccessToken;
 import com.reserver.web.response.IdToken;
 import com.reserver.web.util.CommonUtils;
 
-
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-import org.apache.log4j.Logger;
+
 
 @Controller
 public class LoginController {
 
     private static final String LINE_WEB_LOGIN_STATE = "lineWebLoginState";
     static final String ACCESS_TOKEN = "accessToken";
-    private static final Logger logger = Logger.getLogger(LoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     private static final String NONCE = "nonce";
 
     @Autowired
@@ -42,6 +42,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/gotoauthpage")
     public String goToAuthPage(HttpSession httpSession){
+        logger.info("====>start gotoauthpage");
         final String state = CommonUtils.getToken();
         final String nonce = CommonUtils.getToken();
         httpSession.setAttribute(LINE_WEB_LOGIN_STATE, state);
@@ -63,6 +64,8 @@ public class LoginController {
             @RequestParam(value = "error", required = false) String error,
             @RequestParam(value = "errorCode", required = false) String errorCode,
             @RequestParam(value = "errorMessage", required = false) String errorMessage) {
+
+        logger.info("====>start auth");
 
         if (logger.isDebugEnabled()) {
             logger.debug("parameter code : " + code);
@@ -100,6 +103,7 @@ public class LoginController {
      */
     @RequestMapping("/success")
     public String success(HttpSession httpSession, Model model) {
+        logger.info("====>start success");
 
         AccessToken token = (AccessToken)httpSession.getAttribute(ACCESS_TOKEN);
         if (token == null){
@@ -127,6 +131,7 @@ public class LoginController {
      */
     @RequestMapping("/loginCancel")
     public String loginCancel() {
+        logger.info("====>start loginCancel");
         return "user/login_cancel";
     }
 
@@ -135,6 +140,7 @@ public class LoginController {
      */
     @RequestMapping("/sessionError")
     public String sessionError() {
+        logger.info("====>start sessinError");
         return "user/session_error";
     }
 

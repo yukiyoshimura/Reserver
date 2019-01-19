@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import com.reserver.web.api.LineAPIService;
 import com.reserver.web.response.AccessToken;
 import com.reserver.web.response.Verify;
-import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
