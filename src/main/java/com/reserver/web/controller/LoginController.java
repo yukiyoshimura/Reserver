@@ -1,5 +1,9 @@
 package com.reserver.web.controller;
 
+import com.linecorp.bot.client.LineMessagingClient;
+import com.linecorp.bot.model.PushMessage;
+import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.model.response.BotApiResponse;
 import com.reserver.web.api.LineAPIService;
 import com.reserver.web.response.AccessToken;
 import com.reserver.web.response.IdToken;
@@ -15,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-
+import java.util.concurrent.ExecutionException;
 
 @Controller
 public class LoginController {
@@ -123,6 +127,29 @@ public class LoginController {
             logger.debug("pictureUrl : " + idToken.picture);
         }
         model.addAttribute("idToken", idToken);
+
+        final LineMessagingClient client = LineMessagingClient
+                .builder("cEoSC+0cu+jYCV0Uo9WG6oqaB5zAIoRcwLnQqUV4mhzfOLPsTkUjmr43lVHOSjUAKwMLv1rEAKz+mWNu5HwcndrAl7JrXwj/t5diDZMt8CiMp0WgimAFv65p7NIgtdZGaB0RgHFsCxBnQY0F6ihxpgdB04t89/1O/w1cDnyilFU=")
+                .build();
+
+        final TextMessage textMessage = new TextMessage("hello");
+        final PushMessage pushMessage = new PushMessage(
+                idToken.sub,
+                textMessage);
+
+        final BotApiResponse botApiResponse;
+        try {
+            botApiResponse = client.pushMessage(pushMessage).get();
+            System.out.println(botApiResponse);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            // return;
+        }
+
+
+
+
+
         return "user/success";
     }
 
