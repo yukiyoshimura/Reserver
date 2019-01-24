@@ -16,7 +16,7 @@
 line.bot:
   channel-token: 'cEoSC+0cu+jYCV0Uo9WG6oqaB5zAIoRcwLnQqUV4mhzfOLPsTkUjmr43lVHOSjUAKwMLv1rEAKz+mWNu5HwcndrAl7JrXwj/t5diDZMt8CiMp0WgimAFv65p7NIgtdZGaB0RgHFsCxBnQY0F6ihxpgdB04t89/1O/w1cDnyilFU='
   channel-secret: 'beb2f15aa584d313b990e369cf0aadda'
-  handler.path: /callback
+  handler.path: /webhook
 
 # To remove Client wire logs. Please comment out following lines.
 # See: https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html

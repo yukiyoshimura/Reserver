@@ -31,7 +31,7 @@ public class LineAPIService {
     private String channelId;
     @Value("${linecorp.platform.channel.channelSecret:549323d68c7ddd7ec19afc2d8b6f6a89}")
     private String channelSecret;
-    @Value("${linecorp.platform.channel.callbackUrl:https://5c847941.ngrok.io/auth}")
+    @Value("${linecorp.platform.channel.callbackUrl:https://f5f1f182.ngrok.io/auth}")
     private String callbackUrl;
 
     public AccessToken accessToken(String code) {
