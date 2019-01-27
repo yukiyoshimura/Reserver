@@ -11,9 +11,10 @@ import javax.persistence.*;
 @Setter
 public class ScheduleEntity {
 
+    // TODO フィールドがpublicでないとエラーになる。原因を調べる
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String date;
-    private String name;
+    public Integer id;
+    public String date;
+    public String name;
 }
