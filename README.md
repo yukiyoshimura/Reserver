@@ -3,7 +3,7 @@
 
 - Spring boot
 - Mysql
-- Mybatis
+- JPA
 - gradle
 - Thymeleaf
 - Line Login
