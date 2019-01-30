@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shedule_index</title>
+    </head>
+    <body>
+        <table>
+            <tr th:each="schedule : ${scheduleList}">
+                <td th:text="${schedule.id}"></td>
+                <td th:text="${schedule.name}"></td>
+                <td th:text="${schedule.date}"></td>
+            </tr>
+        </table>
+    </body>
 </html>

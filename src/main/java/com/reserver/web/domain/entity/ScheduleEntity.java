@@ -1,4 +1,4 @@
-package com.reserver.web.entity;
+package com.reserver.web.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
