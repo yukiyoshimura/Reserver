@@ -1,6 +1,7 @@
 package com.reserver.web.controller;
 
 import com.reserver.web.repository.ScheduleRepository;
+import com.reserver.web.util.CsvUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -44,6 +47,17 @@ public class ScheduleController {
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType("text/csv"))
                 .body(CSVData.getBytes("MS932"));
+
+    }
+
+    @GetMapping("schedule/import")
+    public String  ImportCsv() {
+        System.out.println("-----start ImportCsv");
+        File file = new File("/Applications/develop/workspace/Reserver/sample.csv");
+        List<String[]> ReadRecords = CsvUtils.ImportCsv(file);
+
+        System.out.println("aaa");
+        return "schedule/index";
 
     }
 }
